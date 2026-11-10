@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aurora n1200 Halo Movies</title>
+<meta name="description" content="Time-evolution movies of halos and MAPs in AbacusAurora, z = 5 to 0.22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one dark plate, three cards; single dark look to match the movies. */
+:root { color-scheme: dark; --bg: #0b0c12; --raise: #141622; --line: #262a3a; --fg: #eceaf2;
+  --mute: #9b9db0; --accent: #ffc46e;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); margin: 0; font: 16px/1.6 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 36px 48px; display: grid; gap: 28px; }
+.eyebrow { font: 500 11.5px/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--mute); }
+h1 { font: 600 clamp(26px, 4vw, 40px)/1.12 var(--sans); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 72ch; color: var(--mute); }
+header { display: grid; gap: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 22px; }
+.card { display: grid; gap: 10px; color: inherit; text-decoration: none; align-content: start; }
+.card img { width: 100%; max-width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px;
+  border: 1px solid var(--line); background: #000; transition: border-color .15s, transform .15s; }
+.card:hover img, .card:focus-visible img { border-color: var(--accent); transform: translateY(-2px); }
+.card h2 { font: 600 18px/1.25 var(--sans); margin: 0; }
+.card p { font-size: 14.5px; }
+.card .n { font: 12.5px/1 var(--mono); color: var(--mute); }
+footer { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--mute); }
+footer p { max-width: none; }
+@media (prefers-reduced-motion: reduce) { .card img { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="eyebrow">AbacusAurora rockV2 c000 ph390 &middot; 1200&sup3; particles</div>
+<h1>Halos and MAPs, z = 5 to 0.22</h1>
+<p>Looping movies of halo growth in the AbacusAurora simulation. Dark matter is a gotetra phase-sheet render of
+each of 89 outputs; MAPs (massless aggregate particles, the simulation&rsquo;s galaxy tracers) are drawn as small
+light profiles whose size and colour grow with multiplicity. Each movie can be switched to dark matter only.
+For orbiting-camera movies with live property panels, see the
+<a href="https://helenshao.github.io/aurora-halos/">halo property pages</a>.</p></header>
+<main class="grid">
+<a class="card" href="orbits.html"><img src="media/orbits/thumb.jpg" alt="Halo Orbits at z = 0.22" loading="lazy" width="600" height="600"><h2>Halo Orbits</h2><p>A 5 h<sup>&minus;1</sup>Mpc window follows six massive halos; MAPs orbit inside them.</p><span class="n">6 halos &middot; with MAPs or dark matter only</span></a>
+<a class="card" href="assembly.html"><img src="media/assembly/thumb.jpg" alt="Halo Assembly at z = 0.22" loading="lazy" width="600" height="600"><h2>Halo Assembly</h2><p>A fixed 15 &times; 15 &times; 5 h<sup>&minus;1</sup>Mpc box: matter and MAPs stream in from the cosmic web.</p><span class="n">6 halos &middot; with MAPs or dark matter only</span></a>
+<a class="card" href="small.html"><img src="media/small/thumb.jpg" alt="Small Halo Orbits at z = 0.22" loading="lazy" width="600" height="600"><h2>Small Halo Orbits</h2><p>Six group-scale halos with 31&ndash;149 MAPs each, so individual orbits can be followed.</p><span class="n">6 halos &middot; with MAPs or dark matter only</span></a>
+</main>
+<footer><p>Rendering: gotetra (Phil Mansfield). Keyframes are real outputs; in-between frames are interpolated
+for display.</p></footer>
+</div>
+</body>
+</html>
