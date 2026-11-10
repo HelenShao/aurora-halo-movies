@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halo Orbit Camera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: the halo gallery's dark specimen plate, with a grid of looping
+   movies.  Single dark look by choice: the frames are inferno on black. */
+:root {
+  color-scheme: dark;
+  --bg: #0d0a12; --raise: #171320; --line: #2b2338;
+  --fg: #ede7f3; --mute: #a69cb6; --accent: #f4a23c;
+  --cyan: #5ae8ff; --green: #28ffa0; --grey: #bebecd;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); margin: 0; font: 15px/1.55 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); }
+.wrap { max-width: 1240px; margin: 0 auto; }
+header { padding-block: 32px 18px; display: grid; gap: 14px; }
+.eyebrow { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+h1 { font: 600 clamp(22px, 3.2vw, 32px)/1.15 var(--sans); letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 70ch; color: var(--mute); }
+dl { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 4px 0 0; }
+dl div { display: grid; gap: 2px; }
+dt { font: 500 10.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+dd { margin: 0; font: 400 14px/1.3 var(--mono); font-variant-numeric: tabular-nums; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 12.5px/1.4 var(--mono); color: var(--mute); }
+.key i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; border: 2px solid; margin-right: 6px; vertical-align: -1px; }
+main { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr));
+  gap: 22px 16px; padding-block: 10px 36px; }
+figure { margin: 0; min-width: 0; display: grid; gap: 8px; }
+video { display: block; width: 100%; max-width: 100%; aspect-ratio: 1; background: #000; border-radius: 3px; }
+video:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+figcaption { display: flex; flex-wrap: wrap; gap: 2px 10px; font: 12px/1.4 var(--mono);
+  color: var(--mute); font-variant-numeric: tabular-nums; }
+figcaption .rk { color: var(--accent); }
+figcaption .id { color: var(--fg); }
+footer { border-top: 1px solid var(--line); padding-block: 16px 28px; font-size: 12.5px; color: var(--mute); }
+
+.pair { display: grid; gap: 8px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; justify-self: start; }
+.seg button { font: 500 11.5px/1 var(--mono); color: var(--mute); background: var(--raise);
+  border: 0; padding: 7px 10px; cursor: pointer; }
+.seg button[aria-pressed="true"] { color: var(--bg); background: var(--accent); }
+.seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav style="display:flex;flex-wrap:wrap;gap:6px 18px;padding-top:20px;font:13px/1.4 var(--mono)"><a href="index.html">All movies</a><a href="orbits.html">Halo Orbits</a><a href="assembly.html">Halo Assembly</a><a href="small.html">Small Halo Orbits</a><span>Orbit Camera</span><a href="orbit_slow.html">Slow Orbit</a><a href="orbit_25mpc.html">Orbit 25 Mpc</a><a href="orbit_halfturn.html">Half-Turn Orbit</a><a href="https://helenshao.github.io/aurora-halos/">Halo property movies &rarr;</a></nav>
+<header>
+  <div class="eyebrow">AbacusAurora rockV2 &middot; c000 ph390 &middot; 1200&sup3; particles</div>
+  <h1>Circling six massive halos, z = 5.0 to 0.22</h1>
+  <p>The camera makes one full turn around each halo over the movie, rising and dipping by 15&deg;, and always points at the halo&rsquo;s main progenitor; it keeps turning once the simulation reaches z = 0.22. Each frame is a gotetra phase-sheet projection of a 5 &times; 5 &times; 5 h<sup>&minus;1</sup>Mpc cube seen from that frame&rsquo;s direction, at 2.5 h<sup>&minus;1</sup>kpc pixels. Each MAP is drawn as a small elliptical light profile whose size, brightness and colour grow with its multiplicity &mdash; blue-white at 20 particles, gold at thousands &mdash; over the dark matter, shown as a faint blue web. Switch any movie to dark matter only. Dark matter is a gotetra phase-sheet render of each particles_all output; MAPs
+  come from the maplogs, where each keeps a stable ID.</p>
+  <div class="key"><span><i style="border-color:rgb(150,190,255);background:rgb(150,190,255)"></i>mult 20</span><span><i style="border-color:rgb(246,243,236);background:rgb(246,243,236)"></i>mult 200</span><span><i style="border-color:rgb(255,196,110);background:rgb(255,196,110)"></i>mult 3000</span></div>
+  <dl>
+    <div><dt>Outputs</dt><dd>89 epochs</dd></div>
+    <div><dt>Redshift</dt><dd>5.00 &rarr; 0.22</dd></div>
+    <div><dt>Colour</dt><dd>log<sub>10</sub>(1+&delta;) -0.90 &hellip; 3.57, fixed</dd></div>
+    <div><dt>Playback</dt><dd>24 fps, 5 in-between frames per epoch</dd></div>
+  </dl>
+</header>
+<main>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r001_h4455065_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 4455065 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r001_h4455065_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r001_h4455065_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">001</span><span class="id">halo 4455065</span><span class="kv">M<sub>vir</sub>(z = 1.91) 9.40e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r002_h379500_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 379500 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r002_h379500_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r002_h379500_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">002</span><span class="id">halo 379500</span><span class="kv">M<sub>vir</sub>(z = 1.91) 9.29e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r003_h2372071_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 2372071 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r003_h2372071_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r003_h2372071_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">003</span><span class="id">halo 2372071</span><span class="kv">M<sub>vir</sub>(z = 1.91) 7.51e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r010_h589441_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 589441 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r010_h589441_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r010_h589441_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">010</span><span class="id">halo 589441</span><span class="kv">M<sub>vir</sub>(z = 1.91) 4.51e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r025_h145225_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 145225 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r025_h145225_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r025_h145225_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">025</span><span class="id">halo 145225</span><span class="kv">M<sub>vir</sub>(z = 1.91) 3.54e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+<figure class="pair"><video src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r050_h420278_orbit_MAPs.mp4" autoplay muted loop playsinline controls preload="metadata" aria-label="Halo 420278 from z = 5.0 to 0.22"></video><div class="seg" role="group" aria-label="Layers"><button type="button" aria-pressed="true" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-maps/media/camera/r050_h420278_orbit_MAPs.mp4">With MAPs</button><button type="button" aria-pressed="false" data-src="https://helenshao.github.io/aurora-halo-movies-orbit-camera-dm/media/camera/r050_h420278_orbit.mp4">Dark matter only</button></div><figcaption><span class="rk">050</span><span class="id">halo 420278</span><span class="kv">M<sub>vir</sub>(z = 1.91) 2.83e+13 M<sub>&#9737;</sub>/h</span></figcaption></figure>
+</main>
+<footer>Keyframes are real renders and real MAP positions. In-between frames cross-fade the
+dark matter and move each MAP in a straight line between its two recorded positions; they are
+for display, not physics. MAP colour and size encode multiplicity, read from the maplog at every epoch. Rendering: <a href="https://github.com/phil-mansfield/gotetra">gotetra</a>
+(Phil Mansfield).</footer>
+</div>
+
+<script>
+document.querySelectorAll('.pair').forEach(p => {
+  const v = p.querySelector('video');
+  p.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    if (b.getAttribute('aria-pressed') === 'true') return;
+    const t = v.currentTime, playing = !v.paused;
+    p.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    v.src = b.dataset.src;
+    v.addEventListener('loadedmetadata', () => {
+      try { v.currentTime = Math.min(t, v.duration || t); } catch (e) {}
+      if (playing) v.play().catch(() => {});
+    }, { once: true });
+  }));
+});
+</script>
+
+</body>
+</html>
